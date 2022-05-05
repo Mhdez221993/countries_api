@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from 'bcryptjs';
 import express from "express";
+import jwt from "jsonwebtoken";
 
 const prisma = new PrismaClient();
 
@@ -8,6 +9,8 @@ function getAuthRoutes() {
   const router = express.Router();
 
   router.post("/signup", signup);
+
+  router.post("/login", login);
 
   return router;
 }
@@ -39,6 +42,30 @@ async function signup(req, res) {
   });
 
   res.status(200).send('Successfully created!');
+}
+
+// All controllers/utility functions here
+async function login(req, res) {
+  const { email, password } = req.body;
+
+  let user = await getUniqueUser(email);
+
+  if (!user) {
+    res.status(401).send('Please sign up first!')
+  }
+
+  const correctPassword = bcrypt.compareSync(password, user.password);
+
+  if (user && correctPassword) {
+    const tokenPayload = { id: user.id }
+
+    const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, {
+      expiresIn: process.env.JWT_EXPIRE
+    })
+
+    res.cookie('token', token, { httpOnly: true })
+    res.status(200).send(token)
+  }
 }
 
 export { getAuthRoutes };
