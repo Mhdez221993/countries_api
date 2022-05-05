@@ -11,7 +11,8 @@
     "dev": "nodemon server",
     "studio": "prisma studio",
     "generate": "prisma generate",
-    "save": "prisma db push"
+    "save": "prisma db push",
+    "build": "babel --delete-dir-on-start --out-dir dist --copy-files --ignore \"**/__tests__/**,**/__mocks__/**\" --no-copy-ignored server/src"
   },
   "repository": {
     "type": "git",
