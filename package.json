@@ -1,0 +1,41 @@
+{
+  "name": "restcountries_api",
+  "version": "1.0.0",
+  "description": "Front End Developer Test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server",
+    "dev": "nodemon server",
+    "studio": "prisma studio",
+    "generate": "prisma generate",
+    "save": "prisma db push"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mhdez221993/restcountries_api.git"
+  },
+  "author": "Moises Hernandez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mhdez221993/restcountries_api/issues"
+  },
+  "homepage": "https://github.com/Mhdez221993/restcountries_api#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "@babel/register": "^7.17.7",
+    "concurrently": "^7.1.0",
+    "nodemon": "^2.0.16",
+    "prisma": "^3.13.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.13.0",
+    "axios": "^0.27.2",
+    "bcryptjs": "^2.4.3",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "loglevel": "^1.8.0"
+  }
+}
