@@ -12,6 +12,8 @@ function getAuthRoutes() {
 
   router.post("/login", login);
 
+  router.get("/signout", signout);
+
   return router;
 }
 
@@ -66,6 +68,11 @@ async function login(req, res) {
     res.cookie('token', token, { httpOnly: true })
     res.status(200).send(token)
   }
+}
+
+function signout(req, res) {
+  res.clearCookie("token");
+  res.status(200).json('Log out successfully!');
 }
 
 export { getAuthRoutes };
