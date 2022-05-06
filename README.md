@@ -1,18 +1,21 @@
 # Restcountries API
 
-This API offers service to a react application that books and displays dance class appointments. <br>
-It was built in Ruby on Rails, has twelve end-points to manage resources, is tested with Rspec, and uses Swagger for documentation.
+This API has 5 end points, the first 3 are for authentication where
+
+- `/api/v1/auth/signup` -->  signup takes name, email and password and save them to postgrestsql on heroku.
+- `/api/v1/auth/login` -->  login takes email and password and authenticate the user returning a token.
+- `/api/v1/auth/logout` -->  logout destroy the user session by removing the token from the cookies.
+- `/api/v1/countries/search-all`  -->  search-all return all the contries tha match a givent string.
+- `/api/v1/countries/search-one`  -->  search-one return one contriy tha match a givent string.
 
 ![api](https://user-images.githubusercontent.com/67757001/165146174-f64f71ca-e6ef-4bb5-8c06-8e278e40d495.jpg)
 
-### [Api-docs](https://comic-dance-club.herokuapp.com/api-docs/index.html)
-
 ## Built With
 
-- Rails
-- Rspec
+- Node
+- Jest
 - JWT
-- Swagger
+- Supertest
 
 ## Getting Started
 
@@ -23,7 +26,7 @@ Run in your terminal `git clone git@github.com:Mhdez221993/restcountries_api.git
 ## Run some test
 
 ```
-rspec spec --format documentation
+npm run test
 ```
 
 ## Helpful links
@@ -52,4 +55,4 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- To the [jobsqd](https://www.jobsqd.com/) for giving me the test
+- To the [jobsqd](https://www.jobsqd.com/) for providing the test

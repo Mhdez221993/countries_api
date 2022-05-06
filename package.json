@@ -12,8 +12,7 @@
     "generate": "prisma generate",
     "save": "prisma db push",
     "build": "babel --delete-dir-on-start --out-dir dist --copy-files --ignore \"**/__tests__/**,**/__mocks__/**\" --no-copy-ignored server/src",
-    "test": "jest",
-    "jest": "jest --watch"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
