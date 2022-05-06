@@ -1,6 +1,6 @@
 # Restcountries API
 
-This API has 5 end points, the first 3 are for authentication where
+This API has 5 end points where the first 3 are for authentication and the other 2 return one or all countries for a given string
 
 - `/api/v1/auth/signup` -->  signup takes name, email and password and save them to postgrestsql on heroku.
 - `/api/v1/auth/login` -->  login takes email and password and authenticate the user returning a token.
