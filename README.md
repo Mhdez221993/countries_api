@@ -55,4 +55,4 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- To the [jobsqd](https://www.jobsqd.com/) for providing the test
+- To the [jobsqd](https://www.jobsqd.com/) for providing the test project
