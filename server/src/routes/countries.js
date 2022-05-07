@@ -25,10 +25,14 @@ async function searchCountries(req, res, next) {
 
   const name = req.query.query.toLowerCase();
 
+  try {
+    const response = await axios.get(`${BASE_URL}/name/${name}`);
+    res.status(200).json(response.data);
+    return;
+  } finally {
+    res.status(200).json([]);
+  }
 
-  const response = await axios.get(`${BASE_URL}/name/${name}`);
-
-  res.status(200).json(response.data);
 }
 
 async function searchCountry(req, res, next) {

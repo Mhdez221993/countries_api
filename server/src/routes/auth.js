@@ -27,6 +27,7 @@ async function getUniqueUser(email) {
 
 async function signup(req, res) {
   const { name, email, password } = req.body;
+  console.log(name);
 
   let user = await getUniqueUser(email);
 
