@@ -26,17 +26,17 @@ async function getUniqueUser(email) {
 }
 
 async function signup(req, res) {
+
   const { name, email, password } = req.body;
-  console.log(name);
 
   let user = await getUniqueUser(email);
 
   if (user) {
-    res.status(200).send('Invalid email!')
+    res.status(400).send('Invalid email!')
     return
   }
 
-  await prisma.user.create({
+  const newUser = await prisma.user.create({
     data: {
       email,
       name,
@@ -44,7 +44,12 @@ async function signup(req, res) {
     },
   });
 
-  res.status(200).send('200');
+  if (newUser) {
+    res.status(200).send('Signp successfully!');
+    return;
+  } else {
+    res.status(400).send('Something heppend!');
+  }
 }
 
 async function login(req, res) {
@@ -56,7 +61,14 @@ async function login(req, res) {
     res.status(401).send('Please sign up first!')
   }
 
-  const correctPassword = bcrypt.compareSync(password, user.password);
+  let correctPassword;
+
+  if (password) {
+    correctPassword = bcrypt.compareSync(password, user.password);
+  } else {
+    res.status(401).send('Please provide a password!');
+  }
+
 
   if (user && correctPassword) {
     const tokenPayload = { id: user.id }
@@ -64,6 +76,11 @@ async function login(req, res) {
     const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_EXPIRE
     })
+
+    if (!token) {
+      res.status(401).send('There is an error with the token!');
+      return
+    }
 
     res.cookie('token', token, { httpOnly: true })
     res.status(200).send(token)

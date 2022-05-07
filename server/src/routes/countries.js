@@ -21,39 +21,61 @@ function getUserRoutes() {
 async function searchCountries(req, res, next) {
   if (!req.query.query) {
     res.status(400).send('Please enter a search query')
+    return;
   }
 
   const name = req.query.query.toLowerCase();
 
+  let response = [];
+
   try {
-    const response = await axios.get(`${BASE_URL}/name/${name}`);
-    res.status(200).json(response.data);
-    return;
-  } finally {
-    res.status(200).json([]);
+    response = await axios.get(`${BASE_URL}/name/${name}`);
+  } catch (e) {
+    console.log('Something gent wrong with the outer request!');
   }
 
+  if (response.data) {
+    res.status(200).json(response.data);
+    return;
+  } else {
+    res.status(401).json('Something went wrong!');
+  }
 }
 
 async function searchCountry(req, res, next) {
+
   if (!req.query.query) {
-    res.status(400).send('Please enter a search query')
+    res.status(400).send('Please enter a search query');
+    return;
   }
 
   const requesCountry = req.query.query.toLowerCase();
 
-  const { data } = await axios.get(`${BASE_URL}/name/${requesCountry}`);
+  let response = [];
 
-  let result = {};
-  data.forEach(country => {
-    let name = country.name.common.toLowerCase();
-    if (name === requesCountry) {
-      result = country;
-      return;
-    }
-  });
+  try {
+    response = await axios.get(`${BASE_URL}/name/${requesCountry}`);
+  } catch (e) {
+    console.log('Something gent wrong with the outer request!');
+    return;
+  }
 
-  res.status(200).json(result);
+
+  if (response.data) {
+    let result = {};
+    response.data.forEach(country => {
+      let name = country.name.common.toLowerCase();
+      if (name === requesCountry) {
+        result = country;
+        return;
+      }
+    });
+
+    res.status(200).json(result);
+    return;
+  } else {
+    res.status(401).send('Something went wrong!');
+  }
 }
 
 export { getUserRoutes };
