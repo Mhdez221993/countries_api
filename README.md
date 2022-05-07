@@ -23,6 +23,18 @@ To get a local copy up and running follow these simple example steps.
 
 Run in your terminal `git clone git@github.com:Mhdez221993/restcountries_api.git`
 
+## Start the app
+
+```
+npm run dev
+```
+
+## Start studio to check the user been saved in the database
+
+```
+npm run studio
+```
+
 ## Run some test
 
 ```
