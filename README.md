@@ -34,6 +34,8 @@ npm run test
 - [Crafting authentication schemes with Prisma in Express](https://blog.logrocket.com/crafting-authentication-schemes-with-prisma-in-express/)
 - [Hashing passwords in NodeJS with bcrypt](https://sebhastian.com/bcrypt-node/)
 - [How to Build an Authentication API with JWT Token in Node.js](https://www.section.io/engineering-education/how-to-build-authentication-api-with-jwt-token-in-nodejs/)
+- [cors compatibility](https://github.com/expressjs/cors)
+- [forms-validation](https://react-bootstrap.github.io/forms/validation/)
 
 ## Authors
 

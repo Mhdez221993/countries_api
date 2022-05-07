@@ -31,7 +31,7 @@ async function signup(req, res) {
   let user = await getUniqueUser(email);
 
   if (user) {
-    res.status(401).send('Invalid email!')
+    res.status(200).send('Invalid email!')
     return
   }
 
@@ -43,7 +43,7 @@ async function signup(req, res) {
     },
   });
 
-  res.status(200).send('Successfully created!');
+  res.status(200).send('200');
 }
 
 async function login(req, res) {

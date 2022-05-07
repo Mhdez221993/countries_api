@@ -25,6 +25,7 @@ async function searchCountries(req, res, next) {
 
   const name = req.query.query.toLowerCase();
 
+
   const response = await axios.get(`${BASE_URL}/name/${name}`);
 
   res.status(200).json(response.data);
@@ -42,7 +43,7 @@ async function searchCountry(req, res, next) {
   let result = {};
   data.forEach(country => {
     let name = country.name.common.toLowerCase();
-    if (name.includes(requesCountry)) {
+    if (name === requesCountry) {
       result = country;
       return;
     }
